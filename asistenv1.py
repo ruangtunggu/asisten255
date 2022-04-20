@@ -9,7 +9,7 @@ from datetime import datetime,timedelta
 
 from importlib import reload
 
-def os.environ.get(n):
+def buka(n):
     o=open("NewTextDocument.txt","r").read().splitlines()
     for ni in o:
         #print(ni)
