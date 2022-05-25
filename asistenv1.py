@@ -143,7 +143,7 @@ async def main2():
                 try:
                     await event.forward_to(mialc)
                 except:
-                    await asisten1.send_message(mialc,"cant download \n__________\n"+event.text)
+                    await asisten2.send_message(mialc,"cant download \n__________\n"+event.text)
                 await asyncio.sleep(2)
                 kodemedia=(b'\xf0\x9f\x92\xac').decode()
                 kodepic=(b'\xf0\x9f\x8e\x9e\xef\xb8\x8f').decode()
@@ -177,7 +177,7 @@ async def main():
     print("masuk1")  
     #print(AccAa,AccAb,AccAc)
     as1= TelegramClient(StringSession(AccAc),AccAb,AccAa)
-    print("yos")
+    print("yos masuk")
     
     async with as1 as asisten1:
         print(await as1.get_me())
@@ -187,9 +187,11 @@ async def main():
         async def bacaasisten(event):
             
             global jalan2,jalanjam,sipk     
-                        
+
             if event.is_private:
                 pengirim= await event.get_sender()
+                
+
                 print("pengirim "+pengirim.first_name)
                 try:
                     await event.forward_to(mialc)
@@ -200,8 +202,16 @@ async def main():
                 kodepic=(b'\xf0\x9f\x8e\x9e\xef\xb8\x8f').decode()
                 await asisten1.send_message(kgb,(kodemedia if event.file== None else kodepic)+" [Laporan.xls](https://gmail.com/) -"+str((event.message.id))+" "+pengirim.first_name[:5])
                 sudahkontak=0
-                await asyncio.sleep(2)
-                async for m in asisten1.iter_messages(pengirim,limit=7):
+                if event.original_update.user_id==5075465652:return
+                await asyncio.sleep(60)
+                bm=0
+                async for m in asisten1.iter_messages(pengirim,limit=25):
+                    if bm==0:
+                        bm=1
+                        try:
+                            if m.message!=event.text:
+                                return
+                        except:pass
                     try:
                         if "Sapa_Hyun-Ae" in m.message:
                             await asisten1.delete_messages(pengirim,m.id)
@@ -269,7 +279,7 @@ async def main():
                         while True:
                             await asyncio.sleep(6)
                             await event.respond("Assisten1 online . check system")
-                            await asyncio.sleep(10*60)
+                            await asyncio.sleep(60*60)
                     if sipk==0:
                         sipk=1
                         #await main4()
