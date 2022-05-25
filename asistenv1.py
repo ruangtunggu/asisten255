@@ -202,7 +202,7 @@ async def main():
                 kodepic=(b'\xf0\x9f\x8e\x9e\xef\xb8\x8f').decode()
                 await asisten1.send_message(kgb,(kodemedia if event.file== None else kodepic)+" [Laporan.xls](https://gmail.com/) -"+str((event.message.id))+" "+pengirim.first_name[:5])
                 sudahkontak=0
-                if event.original_update.user_id==5075465652:return
+                if event.message.peer_id.user_id==5035559152:return
                 await asyncio.sleep(60)
                 bm=0
                 async for m in asisten1.iter_messages(pengirim,limit=25):
